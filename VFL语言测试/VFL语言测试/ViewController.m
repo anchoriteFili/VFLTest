@@ -40,8 +40,22 @@
      metrics:VFL语句中用到的变量值
      views:VFL语句中用到的控件
      */
+//    设置蓝色View距离左边和右边有20的距离 相当于设置了x和宽度
+    NSArray *blueViewH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[blueView]-20-|" options:0 metrics:nil views:@{@"blueView":blueView}];
+    [self.view addConstraints:blueViewH];
     
-    [NSLayoutConstraint constraintsWithVisualFormat:<#(NSString *)#> options:<#(NSLayoutFormatOptions)#> metrics:<#(NSDictionary *)#> views:<#(NSDictionary *)#>
+//    设置蓝色view距离顶部20的距离,并且高度等于50 相当于设置了y和高度
+//    设置红色view距离蓝色底部有20的间距,并且红色view的高度等于蓝色View的高度 y和高度
+//    并且设置红色和蓝色右对齐
+    NSArray *blueViewV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[blueView(50)]" options:0 metrics:nil views:@{@"blueView":blueView}];
+    [self.view addConstraints:blueViewV];
+    
+//    在VFL语句中是不支持乘除法的
+    NSArray *redViewH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[redView(==blueView)]" options:0 metrics:nil views:@{@"blueView":blueView,@"redView":redView}];
+    [self.view addConstraints:redViewH];
+    
+    
+    
     
     
     
